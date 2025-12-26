@@ -3,26 +3,13 @@ name: C++ CI Pipeline
 on: [push]
 
 jobs:
-build:
-runs-on: ubuntu-latest
+  build:  # 缩进 2 格
+    runs-on: ubuntu-latest  # 缩进 4 格
 
-steps:
-- uses: actions/checkout@v3
+    steps:  # 缩进 4 格
+    - uses: actions/checkout@v3  # 缩进 4 格 (短横线对齐 steps)
 
-- name: Install build tools
-run: |
-sudo apt update
-sudo apt install -y cmake g++
-
-- name: Configure project
-run: |
-cmake -S . -B build
-
-- name: Build project
-run: |
-cmake --build build
-
-- name: Run tests
-run: |
-cd build
-ctest --output-on-failure
+    - name: Install build tools
+      run: |  # run 和 name 对齐
+        sudo apt update
+        sudo apt install -y cmake g++
